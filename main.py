@@ -16,9 +16,12 @@ the_jinja_env = jinja2.Environment(
 # other functions should go above the handlers or in a separate file
 
 # the handler section
-class Main(webapp2.RequestHandler):
-  def get(self):  # for a get request
-    self.response.write('I am sorry Jon')  # the response
+
+class MainHandler(webapp2.RequestHandler):
+  def get(self): 
+  	calendar_template=the_jinja_env.get_template('templates/calendar.html')
+	self.response.write(calendar_template.render())  
+
 
 if Account == True:
 	start = 'Main'
