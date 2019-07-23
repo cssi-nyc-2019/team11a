@@ -18,10 +18,10 @@ the_jinja_env = jinja2.Environment(
 # the handler section
 class Main(webapp2.RequestHandler):
   def get(self):  # for a get request
-    self.response.write('Hello')  # the response
+    self.response.write('I am sorry Jon')  # the response
 
- if Account == True:
-		start = 'Main'
+if Account == True:
+	start = 'Main'
 # the app configuration section	
 app = webapp2.WSGIApplication([
   #('/', MainPage),
