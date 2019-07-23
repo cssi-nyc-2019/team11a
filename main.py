@@ -28,6 +28,7 @@ class Signup(webapp2.RequestHandler):
 	def get(self):
 class Dashboard(webapp2.RequestHandler):
 	def get(self):
+
 # the app configuration section	
 app = webapp2.WSGIApplication([
   #('/', MainPage),
