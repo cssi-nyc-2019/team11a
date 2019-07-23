@@ -14,14 +14,9 @@ the_jinja_env = jinja2.Environment(
 
 # the handler section
 class MainHandler(webapp2.RequestHandler):
-<<<<<<< HEAD
   def get(self): 
   	calendar_template=the_jinja_env.get_template('templates/calendar.html')
 	self.response.write(calendar_template.render())  
-=======
-  def get(self):  # for a get request
-    self.response.write('I am sorry Jon')  # the response
->>>>>>> ac1d77a3b73dfbe1ed7c63c38b6de3ec3dd05a67
 
 
 # the app configuration section	
