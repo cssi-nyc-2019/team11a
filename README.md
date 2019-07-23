@@ -14,7 +14,7 @@ Step 3:
 
 Step 4:
 
-	Implement a calendar where users can add events.
+	Implement a calendar where users can view dates and add events.
 
 Step 5:
 
