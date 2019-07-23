@@ -15,7 +15,8 @@ the_jinja_env = jinja2.Environment(
 # the handler section
 class MainHandler(webapp2.RequestHandler):
   def get(self): 
-	self.response.write('Updated Greeting')  
+  	calendar_template=the_jinja_env.get_template('templates/calendar.html')
+	self.response.write(calendar_template.render())  
 
 
 # the app configuration section	
