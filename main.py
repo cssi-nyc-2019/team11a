@@ -2,10 +2,9 @@
 import webapp2
 import jinja2
 import os
+import datetime
 
 
-Account = False
-start = None
 # this initializes the jinja2 environment
 # this will be the same in every app that uses the jinja2 templating library 
 the_jinja_env = jinja2.Environment(
@@ -16,17 +15,25 @@ the_jinja_env = jinja2.Environment(
 # other functions should go above the handlers or in a separate file
 
 # the handler section
+class Main(webapp2.RequestHandler):
+  def get(self):  # for a get request
+  	login_template = the_jinja_env.get_template('templates/homepage.html')
+  	self.response.write(login_template.render())
+    self.response.write('I am sorry Jon')  # the response
+class Login(webapp2.RequestHandler):
+	def get(self):
+		login_template = the_jinja_env.get_template('templates/login.html')
+		self.response.write()
+class Signup(webapp2.RequestHandler):
+	def get(self):
+class Dashboard(webapp2.RequestHandler):
+	def get(self):
 
-class MainHandler(webapp2.RequestHandler):
-  def get(self): 
-  	calendar_template=the_jinja_env.get_template('templates/calendar.html')
-	self.response.write(calendar_template.render())  
-
-
-if Account == True:
-	start = 'Main'
 # the app configuration section	
 app = webapp2.WSGIApplication([
   #('/', MainPage),
-  ('/', MainHandler),
+  ('/', Main),
+  ('/login', Login),
+  ('/signup', Signup),
+  ('/dashboard', Dashboard),
   ], debug=True)
