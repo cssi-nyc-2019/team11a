@@ -25,3 +25,25 @@ body{
 	background: var(--gradient); /* Set bg equal to value of variable gradient*/
 	font-family: var(--font); /*Set font equal to value of variable font*/
 }
+
+.container{
+	width:100vw;
+	height:100vh;
+	display: grid;
+	grid-template-columns: 1fr 10fr;
+	grid-auto-rows:100vh;
+
+}
+
+.main-nav{
+
+}
+
+.main-section{
+	padding:50px;
+	text-align:center;
+	background-color: white;
+	height:50vh;
+	align-self: center;
+
+}

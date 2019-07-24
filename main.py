@@ -34,11 +34,17 @@ class Dashboard(webapp2.RequestHandler):
 		dash_template = the_jinja_env.get_template('templates/dashboard.html')
 		self.response.write(dash_template.render())
 
+class Reminders(webapp2.RequestHandler):
+  def get(self):
+    reminders_template=the_jinja_env.get_template('templates/reminders.html')
+    self.response.write(reminders_template.render())
+
 # the app configuration section	
 app = webapp2.WSGIApplication([
   #('/', MainPage),
   ('/', Main),
   ('/login', Login),
   ('/dashboard', Dashboard),
+  ('/reminders',Reminders),
   ('/sign-up', Signup)
   ], debug=True)
