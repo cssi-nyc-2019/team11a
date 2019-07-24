@@ -20,7 +20,6 @@ class Main(webapp2.RequestHandler):
 	def get(self): 
 		main_template = the_jinja_env.get_template('templates/homepage.html')
 		self.response.write(main_template.render())
-		self.response.write('I am sorry Jon')
 
 class Login(webapp2.RequestHandler):
 	def get(self):
