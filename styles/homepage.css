@@ -1,31 +1,94 @@
+
+/*Imports fancy font*/
+@import url('https://fonts.googleapis.com/css?family=Fascinate&display=swap');
+
+:root{
+	/*Creates CSS variable set to a certain style which 
+	can be used multiple times (e.g gradient is used in line 25)*/
+	
+	--gradient:linear-gradient(to right, #fa709a 0%, #fee140 100%);
+	--font: Fascinate;
+}
+
+
+
+
+/*Set default margin & padding to 0*/
 *{
 	margin:0;
 	padding:0;
 	box-sizing: border-box;
 }
 
+/*Main styles*/
+body{
+	background: var(--gradient); /* Set bg equal to value of variable gradient*/
+	font-family: var(--font); /*Set font equal to value of variable font*/
+}
 
 .main-nav{
-	position: fixed;
-	top:0;
-	z-index: 1;
 	width:100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: black;
 }
 
-.main-nav ul{
-	display: grid;
+
+
+.icon-box{
+	background-color: white;
+	height: 2.5rem; /* set font relative to default so, 2.5 times the default 16px */
+	width:2.5rem;
 	text-align: center;
-
+	align-self: center;
+	margin:10px;
 }
 
+.main-nav-list{
+	flex-basis: 20%;
+	display:flex;
+	justify-content: space-around;
 
-
+}
 
 .main-nav ul li{
-	list-style: none
+	list-style: none;
+}
+
+.btn{
+	text-decoration:none;
+	color:white;
+	text-transform: uppercase;
+	font-style: bold;
+	display:block;
+	display: flex;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	padding: 0 1em;
+}
+
+.btn:hover{
+	background-color: #B2B2B2; /*hover effect on btns*/
 }
 
 
-.main-nav a{
+
+
+.header{
+	width:50%;
+	text-align: center;
+	margin: 100px auto;
 
 }
+
+#website-name{
+	font-size: 5rem;
+	margin-bottom: 20px;
+}
+
+
+
+
+
