@@ -40,5 +40,6 @@ app = webapp2.WSGIApplication([
   #('/', MainPage),
   ('/', Main),
   ('/login', Login),
-  ('/dashboard', Dashboard)
+  ('/dashboard', Dashboard),
+  ('/sign-up', Signup)
   ], debug=True)

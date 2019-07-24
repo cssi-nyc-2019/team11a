@@ -1,0 +1,27 @@
+
+/*Imports fancy font*/
+@import url('https://fonts.googleapis.com/css?family=Fascinate&display=swap');
+
+:root{
+	/*Creates CSS variable set to a certain style which 
+	can be used multiple times (e.g gradient is used in line 25)*/
+	
+	--gradient:linear-gradient(to right, #fa709a 0%, #fee140 100%);
+	--font: Fascinate;
+}
+
+
+
+
+/*Set default margin & padding to 0*/
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+
+/*Main styles*/
+body{
+	background: var(--gradient); /* Set bg equal to value of variable gradient*/
+	font-family: var(--font); /*Set font equal to value of variable font*/
+}
