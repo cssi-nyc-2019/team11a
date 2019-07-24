@@ -29,10 +29,12 @@ class Login(webapp2.RequestHandler):
 
 class Signup(webapp2.RequestHandler):
 	def get(self):
-		self.response.write()
+		signup_template = the_jinja_env.get_template('templates/signup.html')
+		self.response.write(signup_template.render())
 class Dashboard(webapp2.RequestHandler):
 	def get(self):
-		self.response.write()
+		dash_template = the_jinja_env.get_template('templates/dashboard.html')
+		self.response.write(dash_template.render())
 
 # the app configuration section	
 app = webapp2.WSGIApplication([

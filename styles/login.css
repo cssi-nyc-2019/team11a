@@ -2,3 +2,8 @@
 	margin-left: 25%;
 	margin-right: 25%;
 }
+
+body{
+	background: linear-gradient(to right, #fa709a 0%, #fee140 100%); /* Set bg equal to value of variable gradient*/
+	font-family: Fascinate; /*Set font equal to value of variable font*/
+}
