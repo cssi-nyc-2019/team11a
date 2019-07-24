@@ -39,5 +39,5 @@ app = webapp2.WSGIApplication([
   #('/', MainPage),
   ('/', Main),
   ('/login', Login),
-  ('/dashboard.html')
+  ('/dashboard', Dashboard)
   ], debug=True)
