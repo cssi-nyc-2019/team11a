@@ -14,10 +14,6 @@ body{
   font-family: var(--font);
 }
 
-body {
-  margin: 0;
-}
-
 .icon-box{
   background-color: white;
   height: 2.5rem; /* set font relative to default so, 2.5 times the default 16px */
@@ -51,4 +47,3 @@ body {
 .sidenav li a:hover{
   color: #969696;
 }
-
