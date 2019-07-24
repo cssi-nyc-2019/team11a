@@ -16,6 +16,7 @@ the_jinja_env = jinja2.Environment(
 
 # the handler section
 class Main(webapp2.RequestHandler):
+
 	def get(self): 
 		main_template = the_jinja_env.get_template('templates/homepage.html')
 		self.response.write(main_template.render())
@@ -38,6 +39,5 @@ app = webapp2.WSGIApplication([
   #('/', MainPage),
   ('/', Main),
   ('/login', Login),
-  ('/signup', Signup),
-  ('/dashboard', Dashboard),
+  ('/dashboard.html')
   ], debug=True)

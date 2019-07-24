@@ -2,25 +2,33 @@
 <html>
 <head>
 	<title>Homepage</title>
-	<link rel="stylesheet" type="text/css" href="/styles/home.css">
+	<link rel="stylesheet" type="text/css" href="/styles/homepage.css">
+	<link href="https://fonts.googleapis.com/css?family=Fascinate&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
 
-	<div class="main-nav">
-		<ul>
-			<li><a href="/login">Log In</a></li>
-			<li><a href="/sign-up">Sign Up</a></li>
+	<nav class="main-nav">
+		
+			<div class="icon-box">
+				<i class="fas fa-calendar" style="font-size:36px;"></i>
+			</div>
+		<ul class="main-nav-list">	
+				<li><a class="btn" href="/login">Log In</a></li>
+				<li><a class="btn" href="/sign-up">Sign Up</a></li>
+			
+			
 		</ul>
-	</div>
+	</nav>
 
-	<div class="header">
-		<div class="bg-img"></div>
-		<h1>Work In Progress</h1>
+
+	<header class="header">
+		<h1 id="website-name">Work In Progress</h1>
 		<p>Welcome to Work in Progress! This is a daily planner app for the everyday worker. Work in Progress allows a you to plan events and set objectives for each day. It also allows you to set reminders for specific event. This ultimately helps you lead an organized life. </p>
-	</div>
+	</header>
 </div>
 
-
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>
