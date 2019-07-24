@@ -8,18 +8,17 @@ import datetime
 # this initializes the jinja2 environment
 # this will be the same in every app that uses the jinja2 templating library 
 the_jinja_env = jinja2.Environment(
-  loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
-  extensions=['jinja2.ext.autoescape'],
-  autoescape=True)
+	loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+	extensions=['jinja2.ext.autoescape'],
+	autoescape=True)
 
 # other functions should go above the handlers or in a separate file
 
 # the handler section
 class Main(webapp2.RequestHandler):
-  def get(self):  # for a get request
-  	login_template = the_jinja_env.get_template('templates/homepage.html')
-  	self.response.write(login_template.render())
-    self.response.write('I am sorry Jon')  # the response
+	def get(self):  # for a get request
+		login_template = the_jinja_env.get_template('templates/homepage.html')
+		self.response.write(login_template.render())
 class Login(webapp2.RequestHandler):
 	def get(self):
 		login_template = the_jinja_env.get_template('templates/login.html')
@@ -28,12 +27,13 @@ class Signup(webapp2.RequestHandler):
 	def get(self):
 class Dashboard(webapp2.RequestHandler):
 	def get(self):
+		logub_template = the_jinja_env.get_template('templates/dashboard.html')
 
 # the app configuration section	
 app = webapp2.WSGIApplication([
-  #('/', MainPage),
-  ('/', Main),
-  ('/login', Login),
-  ('/signup', Signup),
-  ('/dashboard', Dashboard),
-  ], debug=True)
+	#('/', MainPage),
+	('/', Main),
+	('/login', Login),
+	('/signup', Signup),
+	('/dashboard', Dashboard),
+	], debug=True)
