@@ -9,19 +9,17 @@ from planner_models import User
 # this initializes the jinja2 environment
 # this will be the same in every app that uses the jinja2 templating library 
 the_jinja_env = jinja2.Environment(
-  loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
-  extensions=['jinja2.ext.autoescape'],
-  autoescape=True)
+	loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+	extensions=['jinja2.ext.autoescape'],
+	autoescape=True)
 
 # other functions should go above the handlers or in a separate file
 
 # the handler section
 class Main(webapp2.RequestHandler):
-
 	def get(self): 
 		main_template = the_jinja_env.get_template('templates/homepage.html')
 		self.response.write(main_template.render())
-		self.response.write('I am sorry Jon')
 
 class Login(webapp2.RequestHandler):
 	def get(self):
@@ -62,11 +60,17 @@ class Dashboard(webapp2.RequestHandler):
 		dash_template = the_jinja_env.get_template('templates/dashboard.html')
 		self.response.write(dash_template.render())
 
+class Reminders(webapp2.RequestHandler):
+  def get(self):
+    reminders_template=the_jinja_env.get_template('templates/reminders.html')
+    self.response.write(reminders_template.render())
+
 # the app configuration section	
 app = webapp2.WSGIApplication([
   #('/', MainPage),
   ('/', Main),
   ('/login', Login),
   ('/dashboard', Dashboard),
+  ('/reminders',Reminders),
   ('/sign-up', Signup)
   ], debug=True)

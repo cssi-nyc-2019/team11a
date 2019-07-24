@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Fascinate&display=swap');
+
+:root{
+  /*Creates CSS variable set to a certain style which 
+  can be used multiple times (e.g gradient is used in line 25)*/
+  
+  --gradient:linear-gradient(to right, #fa709a 0%, #fee140 100%);
+  --font: Fascinate;
+}
+
+body{
+  background: var(--gradient);
+  /*background-color: #fafbfe; */
+  font-family: var(--font);
+}
+
+.icon-box{
+  background-color: white;
+  height: 2.5rem; /* set font relative to default so, 2.5 times the default 16px */
+  width:2.5rem;
+  text-align: center;
+  align-self: center;
+  margin:10px;
+}
+
+.sidenav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  background-color: black;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidenav li a {
+  display: block;
+  color: white;
+  padding: 8px 20px;
+  text-decoration: none;
+  /*margin-left: 30px;*/
+  transition: .4s;
+  text-align: center;
+}
+
+.sidenav li a:hover{
+  color: #969696;
+}
