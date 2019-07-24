@@ -8,7 +8,11 @@
 
 body{
 	background: linear-gradient(to right, #fa709a 0%, #fee140 100%); /* Set bg equal to value of variable gradient*/
-	font-family: Fascinate; /*Set font equal to value of variable font*/
+	/*font-family: Fascinate;*/
+
+	font-family: proxima-nova, sans-serif;
+  	font-weight: 400;
+  	font-style: normal;
 }
 
 *{
@@ -26,7 +30,7 @@ body{
 }
 
 .icon-box{
-	background-color: white;
+	/*background-color: white;*/
 	height: 2.5rem; /* set font relative to default so, 2.5 times the default 16px */
 	width:2.5rem;
 	text-align: center;
@@ -44,7 +48,7 @@ body{
 	height: 100%;
 	align-items: center;
 	justify-content: center;
-	padding: 0 0em;
+	padding: 0 3em;
 }
 
 .btn:hover{
@@ -57,4 +61,14 @@ body{
 	margin:auto;
 	margin-top: 2rem;
 	width:40%;
+}
+
+.home{
+	color:white;
+	text-decoration: none;
+}
+
+.home:hover {
+	color:white;
+	text-decoration: none;
 }
