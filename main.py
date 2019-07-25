@@ -3,7 +3,7 @@ import webapp2
 import jinja2
 import os
 import datetime
-from planner_models import User
+from planner_models import User, Reminders
 from webapp2_extras import sessions
 
 
@@ -104,11 +104,13 @@ class Dashboard(BaseHandler):
 		}
 		if user is not None:
 			dash_template = the_jinja_env.get_template('templates/dashboard.html')
+
 			self.response.write(dash_template.render(dash_dict))
 		else:
 			self.redirect('/')
 
 		
+
 		
 	def post(self):
 		dash_dict = {
@@ -131,16 +133,33 @@ class Dashboard(BaseHandler):
 		if  loggedIn==False:
 			self.response.write(logg_template.render())
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b9cce9634ba6ff969921c6f361859ad8ce54548e
 class Reminders(BaseHandler):
-		def get(self):
-			user = getCurrentUser(self)
-			if user is not None:
-				reminders_template=the_jinja_env.get_template('templates/reminders.html')
-				self.response.write(reminders_template.render())
-			else:
-				self.redirect('/')
+	def get(self):
+		user = getCurrentUser(self)
+		if user is not None:
+			reminders_template=the_jinja_env.get_template('templates/reminders.html')
+			self.response.write(reminders_template.render())
+		else:
+			self.redirect('/')
+	def post(self):
+		reminders_template=the_jinja_env.get_template('templates/reminders.html')
+		date_input = self.request.get('reminder-date')
+		info_input = self.request.get('reminder-info')	
+		
+		#Lets user add reminder
+		addreminder = Reminders(info=info_input, date=date_input)
+		addreminder.put()
+		query = Reminders.query().fetch()
+		#Displays all reminders
+
+		reminders_template=the_jinja_env.get_template('templates/reminders.html')
+		self.response.write(reminders_template.render({'remind_list': query}))
+
 
 class Calendar(BaseHandler):
 	def get(self):
