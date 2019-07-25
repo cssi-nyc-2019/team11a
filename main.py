@@ -23,23 +23,24 @@ class Main(webapp2.RequestHandler):
 
 class Login(webapp2.RequestHandler):
 	def get(self):
-		login_template = the_jinja_env.get_template('templates/login.html')
+		login_template  = the_jinja_env.get_template('templates/login.html')
 		self.response.write(login_template.render())
+
 	def post(self):
-		dash_template = the_jinja_env.get_template('templates/dashboard.html')
-		logg_template = the_jinja_env.get_template('templates/login.html')
-		username = self.request.get('username')
-		password = self.request.get('password')
-
+		dash_template =  the_jinja_env.get_template('templates/dashboard.html')
+		logg_template =  the_jinja_env.get_template('templates/login.html')
+		username  = self.request.get('username')
+		password  = self.request.get('password')
 		query=User.query().fetch()
+		loggedIn=False
 
-		for element in query:
-			if (element.username == username) and (element.password == password):
+		for element  in  query:
+			if (element.username  ==  username) and  (element.password == password):
 				self.response.write(dash_template.render())
+				loggedIn=True
 				break
-			elif ((element.username != username) or (element.password != password)) and (query.index(element)==len(query)-1):
-				self.response.write(logg_template.render())
-				break
+		if  loggedIn==False:
+			self.response.write(logg_template.render())
 		
 
 class Signup(webapp2.RequestHandler):
@@ -56,22 +57,31 @@ class Signup(webapp2.RequestHandler):
 		user.put()
 		log_template = the_jinja_env.get_template('templates/login.html')
 		self.response.write(log_template.render())
+
 class Dashboard(webapp2.RequestHandler):
 	def get(self):
 		dash_template = the_jinja_env.get_template('templates/dashboard.html')
 		self.response.write(dash_template.render())
 
-class Reminders(webapp2.RequestHandler):
-  def get(self):
-    reminders_template=the_jinja_env.get_template('templates/reminders.html')
-    self.response.write(reminders_template.render())
 
+class Reminders(webapp2.RequestHandler):
+		def get(self):
+			reminders_template=the_jinja_env.get_template('templates/reminders.html')
+			self.response.write(reminders_template.render())
+
+class Calendar(webapp2.RequestHandler):
+	def get(self):
+		calendar_template=the_jinja_env.get_template('templates/calendar.html')
+		self.response.write(calendar_template.render())
+
+	
 # the app configuration section	
 app = webapp2.WSGIApplication([
-  #('/', MainPage),
-  ('/', Main),
-  ('/login', Login),
-  ('/dashboard', Dashboard),
-  ('/reminders',Reminders),
-  ('/sign-up', Signup)
-  ], debug=True)
+		#('/', MainPage),
+		('/', Main),
+		('/login', Login),
+		('/dashboard', Dashboard),
+		('/reminders',Reminders),
+		('/sign-up', Signup),
+		('/calendar',Calendar)
+		], debug=True)

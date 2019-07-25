@@ -29,6 +29,9 @@ body{
   margin:10px;
 }
 
+.sidenav{
+  height: 100vh;
+}
 .sidenav ul{
   list-style-type: none;
   margin: 0;
@@ -54,29 +57,19 @@ body{
   color: #969696;
 }
 
-.dash-calendar {
-  width: 500px;
-  height: 80%;
-  padding: 10px;
-  margin-left: 20em;
-  display: block;
+/*
+.grid{
+  display: grid;
+  grid-template-columns:0% 110% 35%;
+
+}
+
+.events-list{
   background-color: white;
-  color: black;
-  border-radius: 8px;
-
 }
+.container{
+  align-self: start;
+  font-size: 1.5rem;
+}*/
 
-.dash-calendar ul {
-  list-style-type: none;
-  text-align: right;
-  margin-right: 410px;
-  margin-top: 50px;
-}
-
-.dash-calendar li a {
-  color: black;
-  text-decoration: none;
-  padding: 2px;
-
-}
 
