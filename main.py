@@ -41,6 +41,7 @@ class Login(webapp2.RequestHandler):
 				break
 		if  loggedIn==False:
 			self.response.write(logg_template.render())
+
 		
 
 class Signup(webapp2.RequestHandler):
@@ -65,6 +66,26 @@ class Dashboard(webapp2.RequestHandler):
 		}
 		dash_template = the_jinja_env.get_template('templates/dashboard.html')
 		self.response.write(dash_template.render(dash_dict))
+	def post(self):
+		dash_dict = {
+		'date': str(datetime.date.today().strftime("%d"))+" "+str(datetime.date.today().strftime("%B"))+" "+str(datetime.date.today().strftime("%Y"))
+		}
+
+		dash_template =  the_jinja_env.get_template('templates/dashboard.html')
+		logg_template =  the_jinja_env.get_template('templates/login.html')
+		username  = self.request.get('username')
+		password  = self.request.get('password')
+		query=User.query().fetch()
+		loggedIn=False
+
+		for element  in  query:
+			if (element.username  ==  username) and  (element.password == password):
+				self.response.write(dash_template.render(dash_dict))
+				loggedIn=True
+				break
+			 
+		if  loggedIn==False:
+			self.response.write(logg_template.render())
 
 
 
