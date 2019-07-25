@@ -29,6 +29,20 @@ body{
   font-style: normal;
 }
 
+.home {
+  text-decoration:none;
+  color:white;
+}
+
+.icon-box{
+  height: 2.5rem; /* set font relative to default so, 2.5 times the default 16px */
+  width:2.5rem;
+  text-align: center;
+  align-self: center;
+  margin:10px;
+  color: white;
+}
+
 .container{
 	width:100vw;
 	height:100vh;
