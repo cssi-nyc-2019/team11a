@@ -26,7 +26,22 @@ class Login(webapp2.RequestHandler):
 		login_template  = the_jinja_env.get_template('templates/login.html')
 		self.response.write(login_template.render())
 
-	
+	def post(self):
+		dash_template =  the_jinja_env.get_template('templates/dashboard.html')
+		logg_template =  the_jinja_env.get_template('templates/login.html')
+		username  = self.request.get('username')
+		password  = self.request.get('password')
+		query=User.query().fetch()
+		loggedIn=False
+
+		for element  in  query:
+			if (element.username  ==  username) and  (element.password == password):
+				self.response.write(dash_template.render())
+				loggedIn=True
+				break
+		if  loggedIn==False:
+			self.response.write(logg_template.render())
+
 		
 
 class Signup(webapp2.RequestHandler):
