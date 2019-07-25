@@ -8,5 +8,9 @@ class User(ndb.Model):
 
 class Events(ndb.Model):
 	date = ndb.StringProperty(required=True)
-	time = ndb.IntergerProperty(required=True)
+	time = ndb.IntegerProperty(required=True)
+	info = ndb.StringProperty(required=True)
 
+class Reminders(ndb.Model):
+	info = ndb.StringProperty(required=True)
+	date = ndb.StringProperty(required=True)

@@ -27,12 +27,10 @@
 		</ul>
   	</div>
 
-
 	<div class="main-section">
 		<div class="add">
 		<h1> Add Reminders</h1>
-		<form method="post" action="">
-
+		<form method="post" action="/reminders">
 			<label>Date: <input type="date" name="reminder-date"></label>
 			<br>
 			<label>Info: <br><textarea rows="5" cols="20" name="reminder-info"></textarea></label>
@@ -43,8 +41,9 @@
 		<div class="reminders-list">
 			<h2>Ongoing Reminders</h2>
 			<ul>
-				<li>hello <button class="delete-btn">Delete</button></li>
-				<li>hello <button class="delete-btn">Delete</button></li>
+				{% for reminder in remind_list%}
+					<li>{{reminder.info}} <button class="delete-btn">Delete</button></li>
+				{% endfor %}
 			</ul>
 		</div>
 	</div>
