@@ -10,31 +10,40 @@
 
 body{
   background: var(--gradient);
-  /*background-color: #fafbfe; */
   /*font-family: var(--font); */
 
   font-family: proxima-nova, sans-serif;
   font-weight: 400;
   font-style: normal;
 
-  margin: 0;
+  margin: 0px;
+}
+
+.home {
+  text-decoration:none;
+  color:white;
 }
 
 .icon-box{
-  background-color: white;
   height: 2.5rem; /* set font relative to default so, 2.5 times the default 16px */
   width:2.5rem;
   text-align: center;
   align-self: center;
   margin:10px;
+  color: white;
+}
+
+.sidenav {
+  margin-top: 0;
 }
 
 .sidenav ul{
   list-style-type: none;
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   width: 15%;
   background-color: black;
+  /*background-color: #727cf5;*/
   position: fixed;
   height: 100%;
   overflow: auto;
@@ -55,28 +64,70 @@ body{
 }
 
 .dash-calendar {
-  width: 500px;
-  height: 80%;
+  width: 600px;
+  height: 100%;
   padding: 10px;
-  margin-left: 20em;
+  margin-left: 16em;
+  margin-top: 10em;
   display: block;
   background-color: white;
   color: black;
   border-radius: 8px;
-
+  overflow: auto;
+  float: left;
 }
 
 .dash-calendar ul {
   list-style-type: none;
   text-align: right;
-  margin-right: 410px;
-  margin-top: 50px;
+  margin-right: 500px;
 }
 
 .dash-calendar li a {
   color: black;
   text-decoration: none;
   padding: 2px;
+}
 
+.dash-reminder {
+  width: 420px;
+  height: 100%;
+  padding: 10px;
+  margin-right: 5em;
+  margin-top: 10em;
+  background-color: white;
+  color: black;
+  border-radius: 8px;
+  overflow: auto;
+  text-align: center;
+  float: right;
+}
+
+.dash-reminder ul {
+  list-style-type: none;
+  text-align: right;
+  margin-right: 410px;
+  margin-bottom: 100px;
+}
+
+.dash-reminder li a {
+  color: black;
+  text-decoration: none;
+  padding: 2px;
+
+}
+
+.dash-goal {
+  width: 420px;
+  height: 100%;
+  padding: 10px;
+  margin-right: 5em;
+  margin-top: 40px;
+  background-color: white;
+  color: black;
+  border-radius: 8px;
+  overflow: auto;
+  text-align: center;
+  float: right;
 }
 

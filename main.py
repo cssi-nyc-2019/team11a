@@ -61,8 +61,12 @@ class Signup(webapp2.RequestHandler):
 
 class Dashboard(webapp2.RequestHandler):
 	def get(self):
+		dash_dict = {
+		'date': str(datetime.date.today().strftime("%d"))+" "+str(datetime.date.today().strftime("%B"))+" "+str(datetime.date.today().strftime("%Y"))
+		}
 		dash_template = the_jinja_env.get_template('templates/dashboard.html')
-		self.response.write(dash_template.render())
+		self.response.write(dash_template.render(dash_dict))
+
 
 
 class Reminders(webapp2.RequestHandler):
@@ -74,6 +78,7 @@ class Calendar(webapp2.RequestHandler):
 	def get(self):
 		calendar_template=the_jinja_env.get_template('templates/calendar.html')
 		self.response.write(calendar_template.render())
+
 
 # the app configuration section	
 app = webapp2.WSGIApplication([
