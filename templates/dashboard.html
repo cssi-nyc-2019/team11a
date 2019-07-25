@@ -12,11 +12,15 @@
 
 		<ul>
 			<div class="icon-box">
-				<a class="home" href="/"><i class="fas fa-calendar" style="font-size:36px;"></i></a>
+				<a class="home"><i class="fas fa-calendar" style="font-size:36px;"></i></a>
 			</div>
 
 			<li><a href="/dashboard">Dashboard</a></li>
+      <br>
+      <br>
 			<li><a href="/calendar">Calendar</a></li>
+      <br>
+      <br>
 			<li><a href="/reminders">Reminders</a></li>
 
 			<li><a style="background-color: #292929; padding: 16px; margin: 8px; margin-top: 400px;" href="/">Log Out</a></li>
@@ -25,45 +29,83 @@
 
   	<div class="dash-calendar">
   		<br>
-  		<h1 style="text-align:center;">{{date}}</h1>
+  		<h1 style="text-align:center;font-size:45px;">{{date}}</h1>
+      <hr>
   		<ul>
+        <br>
   			<li><a href="#calendar">1 AM</a></li>
+        <br>
   			<li><a href="#calendar">2 AM</a></li>
+        <br>
   			<li><a href="#calendar">3 AM</a></li>
+        <br>
   			<li><a href="#calendar">4 AM</a></li>
+        <br>
   			<li><a href="#calendar">5 AM</a></li>
+        <br>
   			<li><a href="#calendar">6 AM</a></li>
+        <br>
   			<li><a href="#calendar">7 AM</a></li>
+        <br>
   			<li><a href="#calendar">8 AM</a></li>
+        <br>
   			<li><a href="#calendar">9 AM</a></li>
+        <br>
   			<li><a href="#calendar">10 AM</a></li>
+        <br>
   			<li><a href="#calendar">11 AM</a></li>
+        <br>
   			<li><a href="#calendar">12 PM</a></li>
+        <br>
   			<li><a href="#calendar">1 PM</a></li>
+        <br>
   			<li><a href="#calendar">2 PM</a></li>
+        <br>
   			<li><a href="#calendar">3 PM</a></li>
+        <br>
   			<li><a href="#calendar">4 PM</a></li>
+        <br>
   			<li><a href="#calendar">5 PM</a></li>
+        <br>
   			<li><a href="#calendar">6 PM</a></li>
+        <br>
   			<li><a href="#calendar">7 PM</a></li>
+        <br>
   			<li><a href="#calendar">8 PM</a></li>
+        <br>
   			<li><a href="#calendar">9 PM</a></li>
+        <br>
   			<li><a href="#calendar">10 PM</a></li>
+        <br>
   			<li><a href="#calendar">11 PM</a></li>
+        <br>
   			<li><a href="#calendar">12 AM</a></li>
   		</ul>
   	</div>
 
     <div class="dash-reminder">
-      <h2>Ongoing Reminders</h2>
-        <ul>
-          <li>hello <button class="delete-btn">Delete</button></li>
-          <li>hello <button class="delete-btn">Delete</button></li>
-        </ul>
+      <h2 style="text-align: center;">Ongoing Reminders</h2>
+        <hr>
+        <br>
+        <input type="checkbox" name="reminder1">[Placeholder]</input>
+        <br>
+        <input type="checkbox" name="reminder2">[Placeholder]</input>
+        <br>
+        <input type="checkbox" name="reminder3">[Placeholder]</input>
+        <br>
+        <input type="checkbox" name="reminder4">[Placeholder]</input>
     </div>
 
     <div class="dash-goal">
       <h2>Daily Goal</h2>
+      <hr>
+      <form method="" action="">
+
+      <label><br><textarea rows="2" cols="20" name="daily-goal"></textarea></label>
+      <br>
+
+      <button id="submit-btn">+</button>
+    </form>
     </div>
 
 </body>

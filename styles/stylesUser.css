@@ -68,10 +68,11 @@ body{
   height: 100%;
   padding: 10px;
   margin-left: 16em;
-  margin-top: 10em;
+  margin-top: 5em;
+  margin-bottom: 5em;
   display: block;
   background-color: white;
-  color: black;
+  color: #6c757d;
   border-radius: 8px;
   overflow: auto;
   float: left;
@@ -84,7 +85,7 @@ body{
 }
 
 .dash-calendar li a {
-  color: black;
+  color: #6c757d;
   text-decoration: none;
   padding: 2px;
 }
@@ -94,27 +95,18 @@ body{
   height: 100%;
   padding: 10px;
   margin-right: 5em;
-  margin-top: 10em;
+  margin-top: 5em;
   background-color: white;
-  color: black;
+  color: #6c757d;
   border-radius: 8px;
   overflow: auto;
-  text-align: center;
   float: right;
 }
 
-.dash-reminder ul {
-  list-style-type: none;
-  text-align: right;
-  margin-right: 410px;
-  margin-bottom: 100px;
-}
-
-.dash-reminder li a {
-  color: black;
-  text-decoration: none;
-  padding: 2px;
-
+.dash-reminder input{
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 5em;
 }
 
 .dash-goal {
@@ -124,10 +116,15 @@ body{
   margin-right: 5em;
   margin-top: 40px;
   background-color: white;
-  color: black;
+  color: #6c757d;
   border-radius: 8px;
   overflow: auto;
   text-align: center;
   float: right;
 }
 
+textarea{
+  font-size:1.2rem;
+  padding:3px;
+  color: #6c757d;
+}
