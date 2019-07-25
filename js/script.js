@@ -28,6 +28,14 @@ function jump() {
     showCalendar(currentMonth, currentYear);
 }
 
+
+function onClick(event){
+    event.target.setAttribute('id',`${currYear} ${month} ${day}`);
+    let id=event.target.id;
+    console.log(id);
+
+}
+
 function showCalendar(month, year) {
 
     let firstDay = (new Date(year, month)).getDay();
@@ -53,6 +61,7 @@ function showCalendar(month, year) {
         for (let j = 0; j < 7; j++) {
             if (i === 0 && j < firstDay) {
                 let cell = document.createElement("td");
+                
                 let cellText = document.createTextNode("");
                 cell.appendChild(cellText);
                 row.appendChild(cell);
@@ -63,6 +72,7 @@ function showCalendar(month, year) {
 
             else {
                 let cell = document.createElement("td");
+                cell.addEventListener('click',onClick);
                 let cellText = document.createTextNode(date);
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
                     cell.classList.add("bg-info");
