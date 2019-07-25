@@ -107,7 +107,15 @@ class Dashboard(BaseHandler):
 			self.response.write(dash_template.render(dash_dict))
 		else:
 			self.redirect('/')
+<<<<<<< HEAD
+		dash_dict = {
+		'date': str(datetime.date.today().strftime("%d"))+" "+str(datetime.date.today().strftime("%B"))+" "+str(datetime.date.today().strftime("%Y"))
+		}
+		dash_template = the_jinja_env.get_template('templates/dashboard.html')
+		self.response.write(dash_template.render(dash_dict))
+=======
 		
+>>>>>>> b9cce9634ba6ff969921c6f361859ad8ce54548e
 	def post(self):
 		dash_dict = {
 		'date': str(datetime.date.today().strftime("%d"))+" "+str(datetime.date.today().strftime("%B"))+" "+str(datetime.date.today().strftime("%Y"))
