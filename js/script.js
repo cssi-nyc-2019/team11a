@@ -29,12 +29,7 @@ function jump() {
 }
 
 
-function onClick(event){
-    event.target.setAttribute('id',`${currYear} ${month} ${day}`);
-    let id=event.target.id;
-    console.log(id);
 
-}
 
 function showCalendar(month, year) {
 
@@ -53,6 +48,8 @@ function showCalendar(month, year) {
 
     // creating all cells
     let date = 1;
+    
+
     for (let i = 0; i < 6; i++) {
         // creates a table row
         let row = document.createElement("tr");
@@ -65,6 +62,7 @@ function showCalendar(month, year) {
                 let cellText = document.createTextNode("");
                 cell.appendChild(cellText);
                 row.appendChild(cell);
+                cell.setAttribute('id',`${year} ${month} ${date}`);
             }
             else if (date > daysInMonth) {
                 break;
@@ -72,14 +70,19 @@ function showCalendar(month, year) {
 
             else {
                 let cell = document.createElement("td");
-                cell.addEventListener('click',onClick);
                 let cellText = document.createTextNode(date);
+                cell.setAttribute('id',`${year} ${months[month]} ${date}`);
+
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
                     cell.classList.add("bg-info");
                 } // color today's date
                 cell.appendChild(cellText);
+                
+
+                
                 row.appendChild(cell);
                 date++;
+                cell.addEventListener('click',onClick);
             }
 
 
@@ -87,5 +90,17 @@ function showCalendar(month, year) {
 
         tbl.appendChild(row); // appending each row into calendar body.
     }
+
+}
+
+
+function onClick(event){
+    let id=event.target.id;
+    const xhr= new XMLHttpRequest();
+    xhr.open('post','/calendar');
+    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xhr.send(`date=${id}`);
+   
+    console.log(id);
 
 }
