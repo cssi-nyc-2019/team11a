@@ -98,14 +98,12 @@ class Signup(BaseHandler):
 
 class Dashboard(BaseHandler):
 	def get(self):
-<<<<<<< HEAD
 		user = getCurrentUser(self)
 		if user is not None:
 			dash_template = the_jinja_env.get_template('templates/dashboard.html')
 			self.response.write(dash_template.render())
 		else:
 			self.redirect('/')
-=======
 		dash_dict = {
 		'date': str(datetime.date.today().strftime("%d"))+" "+str(datetime.date.today().strftime("%B"))+" "+str(datetime.date.today().strftime("%Y"))
 		}
@@ -131,8 +129,6 @@ class Dashboard(BaseHandler):
 			 
 		if  loggedIn==False:
 			self.response.write(logg_template.render())
-
->>>>>>> 937a3706d4052559b354f706395fecd286c12ed4
 
 class Reminders(BaseHandler):
 		def get(self):

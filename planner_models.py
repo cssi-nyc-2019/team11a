@@ -8,5 +8,5 @@ class User(ndb.Model):
 
 class Events(ndb.Model):
 	date = ndb.StringProperty(required=True)
-	time = ndb.IntergerProperty(required=True)
+	time = ndb.IntegerProperty(required=True)
 
