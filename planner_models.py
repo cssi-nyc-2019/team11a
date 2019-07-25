@@ -5,6 +5,8 @@ class User(ndb.Model):
 	username = ndb.StringProperty(required=True)
 	password = ndb.StringProperty(required=True)
 
+
 class Events(ndb.Model):
 	date = ndb.StringProperty(required=True)
 	time = ndb.IntergerProperty(required=True)
+

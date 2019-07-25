@@ -4,6 +4,7 @@ import jinja2
 import os
 import datetime
 from planner_models import User
+from webapp2_extras import sessions
 
 
 # this initializes the jinja2 environment
@@ -15,13 +16,49 @@ the_jinja_env = jinja2.Environment(
 
 # other functions should go above the handlers or in a separate file
 
+def getCurrentUser(self):
+	#will return None if user does not exist
+	return self.session.get('user')
+
+def login(self, id):
+	self.session['user'] = id
+
+def logout(self):
+	self.session['user'] = None
+
+def isLoggedIn(self):
+	if self.session['user'] is not None:
+		return True
+	else:
+		return False
+
+
+class BaseHandler(webapp2.RequestHandler):
+    def dispatch(self):
+        # Get a session store for this request.
+        self.session_store = sessions.get_store(request=self.request)
+        try:
+            # Dispatch the request.
+            webapp2.RequestHandler.dispatch(self)
+        finally:
+            # Save all sessions.
+            self.session_store.save_sessions(self.response)
+    @webapp2.cached_property
+    def session(self):
+        # Returns a session using the default cookie key.
+        return self.session_store.get_session()
+
+
+
+
 # the handler section
-class Main(webapp2.RequestHandler):
+class Main(BaseHandler):
 	def get(self): 
 		main_template = the_jinja_env.get_template('templates/homepage.html')
 		self.response.write(main_template.render())
+		logout(self)
 
-class Login(webapp2.RequestHandler):
+class Login(BaseHandler):
 	def get(self):
 		login_template  = the_jinja_env.get_template('templates/login.html')
 		self.response.write(login_template.render())
@@ -44,7 +81,7 @@ class Login(webapp2.RequestHandler):
 
 		
 
-class Signup(webapp2.RequestHandler):
+class Signup(BaseHandler):
 	def get(self):
 		signup_template = the_jinja_env.get_template('templates/signup.html')
 		self.response.write(signup_template.render())
@@ -54,13 +91,21 @@ class Signup(webapp2.RequestHandler):
 		password = self.request.get('password')
 
 		user = User(email=email, username=username, password=password)
-		print user 
 		user.put()
+		login(self, username)
 		log_template = the_jinja_env.get_template('templates/login.html')
 		self.response.write(log_template.render())
 
-class Dashboard(webapp2.RequestHandler):
+class Dashboard(BaseHandler):
 	def get(self):
+<<<<<<< HEAD
+		user = getCurrentUser(self)
+		if user is not None:
+			dash_template = the_jinja_env.get_template('templates/dashboard.html')
+			self.response.write(dash_template.render())
+		else:
+			self.redirect('/')
+=======
 		dash_dict = {
 		'date': str(datetime.date.today().strftime("%d"))+" "+str(datetime.date.today().strftime("%B"))+" "+str(datetime.date.today().strftime("%Y"))
 		}
@@ -87,17 +132,33 @@ class Dashboard(webapp2.RequestHandler):
 		if  loggedIn==False:
 			self.response.write(logg_template.render())
 
+>>>>>>> 937a3706d4052559b354f706395fecd286c12ed4
 
-
-class Reminders(webapp2.RequestHandler):
+class Reminders(BaseHandler):
 		def get(self):
-			reminders_template=the_jinja_env.get_template('templates/reminders.html')
-			self.response.write(reminders_template.render())
+			user = getCurrentUser(self)
+			if user is not None:
+				reminders_template=the_jinja_env.get_template('templates/reminders.html')
+				self.response.write(reminders_template.render())
+			else:
+				self.redirect('/')
 
-class Calendar(webapp2.RequestHandler):
+class Calendar(BaseHandler):
 	def get(self):
-		calendar_template=the_jinja_env.get_template('templates/calendar.html')
-		self.response.write(calendar_template.render())
+		user = getCurrentUser(self)
+		if user is not None:
+			calendar_template=the_jinja_env.get_template('templates/calendar.html')
+			self.response.write(calendar_template.render())
+		else:
+			self.redirect('/')
+
+config = {}
+config['webapp2_extras.sessions'] = {
+    'secret_key': 'your-super-secret-key',
+}
+
+
+
 
 
 # the app configuration section	
@@ -109,4 +170,4 @@ app = webapp2.WSGIApplication([
 		('/reminders',Reminders),
 		('/sign-up', Signup),
 		('/calendar',Calendar)
-		], debug=True)
+		], debug=True, config=config)
