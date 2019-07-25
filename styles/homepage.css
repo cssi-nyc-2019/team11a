@@ -38,11 +38,15 @@ body{
 	background-color: black;
 }
 
+.home {
+  text-decoration:none;
+  color:white;
+}
+
 
 
 .icon-box{
     color:black;
-	background-color: white;
 	height: 2.5rem; /* set font relative to default so, 2.5 times the default 16px */
 	width:2.5rem;
 	text-align: center;
@@ -79,10 +83,7 @@ body{
 }
 
 
-.home{
-	color:black;
-	text-decoration: none;
-}
+7
 
 .header{
 	width:50%;
