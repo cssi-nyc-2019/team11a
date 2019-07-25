@@ -12,15 +12,11 @@
 
 		<ul>
 			<div class="icon-box">
-				<i class="fas fa-calendar" style="font-size:36px;"></i>
+				<a class="home" href="/"><i class="fas fa-calendar" style="font-size:36px;"></i></a>
 			</div>
 
 			<li><a href="/dashboard">Dashboard</a></li>
-			<br>
-			<br>
 			<li><a href="/calendar">Calendar</a></li>
-			<br>
-			<br>
 			<li><a href="/reminders">Reminders</a></li>
 
 			<li><a style="background-color: #292929; padding: 16px; margin: 8px; margin-top: 400px;" href="/">Log Out</a></li>
@@ -29,9 +25,9 @@
 
   	<div class="dash-calendar">
   		<br>
-  		<h1 style="text-align:center;">{{Date}}</h1>
+  		<h1 style="text-align:center;">{{date}}</h1>
   		<ul>
-  			<li><a href="#calendar">1 AM</a></li>
+  			<li><a href="#calendar">{{}} AM</a> </li>
   			<li><a href="#calendar">2 AM</a></li>
   			<li><a href="#calendar">3 AM</a></li>
   			<li><a href="#calendar">4 AM</a></li>
@@ -57,5 +53,18 @@
   			<li><a href="#calendar">12 AM</a></li>
   		</ul>
   	</div>
+
+    <div class="dash-reminder">
+      <h2>Ongoing Reminders</h2>
+        <ul>
+          <li>hello <button class="delete-btn">Delete</button></li>
+          <li>hello <button class="delete-btn">Delete</button></li>
+        </ul>
+    </div>
+
+    <div class="dash-goal">
+      <h2>Daily Goal</h2>
+    </div>
+
 </body>
 </html>
