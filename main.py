@@ -39,7 +39,6 @@ class Login(webapp2.RequestHandler):
 				self.response.write(dash_template.render())
 				loggedIn=True
 				break
-			 
 		if  loggedIn==False:
 			self.response.write(logg_template.render())
 		
