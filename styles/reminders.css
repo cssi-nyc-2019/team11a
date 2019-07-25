@@ -23,7 +23,10 @@
 /*Main styles*/
 body{
 	background: var(--gradient); /* Set bg equal to value of variable gradient*/
-	font-family: var(--font); /*Set font equal to value of variable font*/
+	/*font-family: var(--font); /*Set font equal to value of variable font*/
+	font-family: proxima-nova, sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .container{
@@ -35,15 +38,98 @@ body{
 
 }
 
-.main-nav{
+.sidenav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  background-color: black;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
 
+.sidenav li a {
+  display: block;
+  color: white;
+  padding: 0px;
+  text-decoration: none;
+  transition: .4s;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sidenav li a:hover{
+  color: #969696;
 }
 
 .main-section{
 	padding:50px;
 	text-align:center;
-	background-color: white;
+	background-color: black;
+	color:white;
 	height:50vh;
+	width:60%;
 	align-self: center;
+	margin:auto;
+	border-radius: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 
+}
+
+.add{
+	text-align: center;
+}
+
+.main-section form{
+	font-size: 1.2rem;
+}
+
+
+.main-section form input{
+	margin:10px;
+	font-size: 1.2rem;
+}
+
+textarea{
+	font-size:1.2rem;
+	padding:3px;
+}
+
+#submit-btn{
+	display: block;
+	background-color: black;
+	color:white;
+	width:2rem;
+	font-size: 2rem;
+	border-radius: 10px;
+	margin:10px auto;
+	border:none;
+}
+
+
+#submit-btn:hover{
+	color: #B2B2B2;
+	font-size: 2.2rem;
+}
+
+.reminders-list{
+	text-align: left;
+	padding:5px;
+}
+
+.reminders-list li{
+	color:black;
+	list-style:square;
+	background-color: white;
+	margin: 3px;
+	padding:3px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.delete-btn:hover{
+	background-color: #B2B2B2;
 }

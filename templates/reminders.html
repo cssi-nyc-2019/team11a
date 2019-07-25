@@ -8,20 +8,45 @@
 </head>
 <body>
 	<div class="container">
-	<nav class="main-nav">
+	<div class="sidenav">
+
 		<ul>
-			<li>jiojboubo</li>
-			<li>hihihh</li>
-			<li>kbkbkb</li>
+			<div class="icon-box">
+				<i class="fas fa-calendar" style="font-size:36px;"></i>
+			</div>
+
+			<li><a href="/dashboard">Dashboard</a></li>
+			<br>
+			<br>
+			<li><a href="/calendar">Calendar</a></li>
+			<br>
+			<br>
+			<li><a href="/reminders">Reminders</a></li>
+
+			<li><a style="background-color: #292929; padding: 16px; margin: 8px; margin-top: 400px;" href="/">Log Out</a></li>
 		</ul>
-	</nav>
+  	</div>
+
 
 	<div class="main-section">
-		<h1>Reminders</h1>
+		<div class="add">
+		<h1> Add Reminders</h1>
 		<form method="post" action="">
-			<label>Info: <input type="text" name="reminder-info"></label>
-			<input type="submit" name="submit" value="+">
+
+			<label>Date: <input type="date" name="reminder-date"></label>
+			<br>
+			<label>Info: <br><textarea rows="5" cols="20" name="reminder-info"></textarea></label>
+			<br>
+			<button id="submit-btn">+</button>
 		</form>
+		</div>
+		<div class="reminders-list">
+			<h2>Ongoing Reminders</h2>
+			<ul>
+				<li>hello <button class="delete-btn">Delete</button></li>
+				<li>hello <button class="delete-btn">Delete</button></li>
+			</ul>
+		</div>
 	</div>
 </div>
 
