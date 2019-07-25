@@ -38,6 +38,7 @@ class Login(webapp2.RequestHandler):
 				self.response.write(dash_template.render())
 				break
 			elif ((element.username != username) or (element.password != password)) and (query.index(element)==len(query)-1):
+				self.response.write(logg_template.render())
 				break
 		
 
