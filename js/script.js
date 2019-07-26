@@ -95,12 +95,33 @@ function showCalendar(month, year) {
 
 
 function onClick(event){
+    const cells=document.querySelectorAll('td');
+    const eventsAdd=document.querySelector('.add');
+
+  //eventsAdd.classList.remove('hidden');
+    for(let i=0;i<cells.length;i++){
+        cells[i].classList.remove('bg-info');
+    }
+  
     let id=event.target.id;
-    const xhr= new XMLHttpRequest();
-    xhr.open('post','/calendar');
-    xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-    xhr.send(`date=${id}`);
-   
-    console.log(id);
+    event.target.classList.add('bg-info');
 
 }
+
+
+function onSubmit(event){
+    event.preventDefault();
+    const activeCell=document.querySelector('.bg-info');
+    const time=document.querySelector('#time').value;
+    const info=document.querySelector('#info').value;
+    let id=activeCell.id;
+    console.log(id);
+    $.post('/calendar',{'date':id,'info':info,'time':time});
+    document.querySelector('#time').value="";
+    document.querySelector('#info').value="";
+}
+
+
+
+const form=document.querySelector('.add form');
+form.addEventListener('submit',onSubmit);

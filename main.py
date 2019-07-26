@@ -3,7 +3,7 @@ import webapp2
 import jinja2
 import os
 import datetime
-from planner_models import User, Reminders
+from planner_models import User, Reminders, Events
 from webapp2_extras import sessions
 
 
@@ -15,7 +15,6 @@ the_jinja_env = jinja2.Environment(
 	autoescape=True)
 
 # other functions should go above the handlers or in a separate file
-
 def getCurrentUser(self):
 	#will return None if user does not exist
 	return self.session.get('user')
@@ -32,7 +31,23 @@ def isLoggedIn(self):
 	else:
 		return False
 
+#global variables
+date=None
+time=None
+info=None
 
+dash_dict = {
+		'date': str(datetime.date.today().strftime("%d"))+" "+str(datetime.date.today().strftime("%B"))+" "+str(datetime.date.today().strftime("%Y"))
+		}
+
+
+
+
+
+
+
+
+# the handler section
 class BaseHandler(webapp2.RequestHandler):
     def dispatch(self):
         # Get a session store for this request.
@@ -54,8 +69,13 @@ class BaseHandler(webapp2.RequestHandler):
 # the handler section
 class Main(BaseHandler):
 	def get(self): 
-		main_template = the_jinja_env.get_template('templates/homepage.html')
-		self.response.write(main_template.render())
+		user=getCurrentUser(self)
+		if isLoggedIn(self):
+			dashboard_template = the_jinja_env.get_template('templates/dashboard.html')
+			self.response.write(dashboard_template.render(dash_dict))
+		else:
+			home_page_template=the_jinja_env.get_template('templates/homepage.html')
+			self.response.write(home_page_template.render())
 
 class Login(BaseHandler):
 	def get(self):
@@ -64,20 +84,21 @@ class Login(BaseHandler):
 
 	def post(self):
 		dash_template =  the_jinja_env.get_template('templates/dashboard.html')
-		logg_template =  the_jinja_env.get_template('templates/login.html')
+		login_template =  the_jinja_env.get_template('templates/login.html')
 		username  = self.request.get('username')
 		password  = self.request.get('password')
 		query=User.query().fetch()
-		loggedIn=False
+		user = getCurrentUser(self)
 
 		for element  in  query:
 			if (element.username  ==  username) and  (element.password == password):
-				loggedIn=True
+				
 				login(self, username)
-				self.response.write(dash_template.render())
+				self.response.write(dash_template.render(dash_dict))
 				break
-		if loggedIn==False:
-			self.response.write(logg_template.render())
+		if not(isLoggedIn(self)):
+			self.response.write(login_template.render())
+
 
 		
 
@@ -96,48 +117,23 @@ class Signup(BaseHandler):
 		log_template = the_jinja_env.get_template('templates/login.html')
 		self.response.write(log_template.render())
 
+
 class Dashboard(BaseHandler):
 	def get(self):
-		user = getCurrentUser(self)
-		dash_dict = {
-		'date': str(datetime.date.today().strftime("%d"))+" "+str(datetime.date.today().strftime("%B"))+" "+str(datetime.date.today().strftime("%Y"))
-		}
+		user=getCurrentUser(self)
+		
+		dash_template = the_jinja_env.get_template('templates/dashboard.html')
 		if user is not None:
-			dash_template = the_jinja_env.get_template('templates/dashboard.html')
-
 			self.response.write(dash_template.render(dash_dict))
 		else:
 			self.redirect('/')
 
-		
 
 		
-	def post(self):
-		dash_dict = {
-		'date': str(datetime.date.today().strftime("%d"))+" "+str(datetime.date.today().strftime("%B"))+" "+str(datetime.date.today().strftime("%Y"))
-		}
-
-		dash_template =  the_jinja_env.get_template('templates/dashboard.html')
-		logg_template =  the_jinja_env.get_template('templates/login.html')
-		username  = self.request.get('username')
-		password  = self.request.get('password')
-		query=User.query().fetch()
-		loggedIn=False
-
-		for element  in  query:
-			if (element.username  ==  username) and  (element.password == password):
-				self.response.write(dash_template.render(dash_dict))
-				loggedIn=True
-				break
-			 
-		if  loggedIn==False:
-			self.response.write(logg_template.render())
-
-<<<<<<< HEAD
 
 
-=======
->>>>>>> b9cce9634ba6ff969921c6f361859ad8ce54548e
+
+
 class Reminders(BaseHandler):
 	def get(self):
 		user = getCurrentUser(self)
@@ -171,16 +167,35 @@ class Calendar(BaseHandler):
 			self.redirect('/')
 
 	def post(self):
-		date_request=self.request.get('date')
-		login_template=the_jinja_env.get_template('templates/login.html')
-		self.response.write(calendar_template.render())
+		date=self.request.get('date')
+		time=self.request.get('time')
+		info=self.request.get('info')
+
+		newEvent=Events(date=date,time=time,info=info)
+		events_query=Events.query().fetch()
+		events_query.insert(0,newhEvent)
+		newEvent.put()
+		
+		
+		
+		calendar_template=the_jinja_env.get_template('templates/calendar.html')
+		self.response.write(calendar_template.render({'events':events_query}))
 
 
 
+class Logout(BaseHandler):
+	def get(self):
+		logout(self)
+		user=getCurrentUser(self)
+		if user is not None:
+			dash_template=the_jinja_env.get_template('templates/dashboard.html')
+		else:
+			home_page_template=the_jinja_env.get_template('templates/homepage.html')
+			self.response.write(home_page_template.render())
 
 config = {}
 config['webapp2_extras.sessions'] = {
-    'secret_key': 'your-super-secret-key',
+    'secret_key': 'your-super-secret-key'
 }
 
 
@@ -195,5 +210,6 @@ app = webapp2.WSGIApplication([
 		('/dashboard', Dashboard),
 		('/reminders',Reminders),
 		('/sign-up', Signup),
-		('/calendar',Calendar)
+		('/calendar',Calendar),
+		('/logout',Logout)
 		], debug=True, config=config)

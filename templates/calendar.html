@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/styles/calendar.css">
 </head>
 <body>
-
+<div class="grid">
 <div class="sidenav">
 
 		<ul>
@@ -120,11 +120,28 @@
         </select></form></div>      
 </div>
 
-<div class="events-list">
-	<ul></ul>
+<div class="events-section">
+	<div class="ongoing">
+	<h1>Events</h1>
+	<hr>
+	<h3>Ongoing Events</h3>
+	<ul>
+		{%for event in events%}
+		<li>{{event.info}}</li>
+		{%endfor%}
+	</ul>
+</div>
+	<div class="add">
+	<h3>Add event</h3>
+	<form>
+		<label>Time: <input id="time" type="time" name="event-time"></label>
+		<label>Info: <input id="info" type="text" name="event-info"></label>
+		<button type="submit">+</button>
+	</form>
+</div>
 </div>
 
-
+</div>
 
 <script type="text/javascript" src="/js/script.js"></script>
 
@@ -139,7 +156,7 @@
         integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
         crossorigin="anonymous"></script>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </body>
 </html>
