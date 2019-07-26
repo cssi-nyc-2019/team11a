@@ -29,12 +29,7 @@ function jump() {
 }
 
 
-function onClick(event){
-    event.target.setAttribute('id',`${currYear} ${month} ${day}`);
-    let id=event.target.id;
-    console.log(id);
 
-}
 
 function showCalendar(month, year) {
 
@@ -44,7 +39,7 @@ function showCalendar(month, year) {
     let tbl = document.getElementById("calendar-body"); // body of the calendar
 
     // clearing all previous cells
-    tbl.innerHTML = "";
+    //tbl.innerHTML = "";
 
     // filing data about month and in the page via DOM.
     monthAndYear.innerHTML = months[month] + " " + year;
@@ -53,6 +48,8 @@ function showCalendar(month, year) {
 
     // creating all cells
     let date = 1;
+    
+
     for (let i = 0; i < 6; i++) {
         // creates a table row
         let row = document.createElement("tr");
@@ -65,6 +62,7 @@ function showCalendar(month, year) {
                 let cellText = document.createTextNode("");
                 cell.appendChild(cellText);
                 row.appendChild(cell);
+                cell.setAttribute('id',`${year} ${month} ${date}`);
             }
             else if (date > daysInMonth) {
                 break;
@@ -72,14 +70,19 @@ function showCalendar(month, year) {
 
             else {
                 let cell = document.createElement("td");
-                cell.addEventListener('click',onClick);
                 let cellText = document.createTextNode(date);
+                cell.setAttribute('id',`${year} ${months[month]} ${date}`);
+
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
                     cell.classList.add("bg-info");
                 } // color today's date
                 cell.appendChild(cellText);
+                
+
+                
                 row.appendChild(cell);
                 date++;
+                cell.addEventListener('click',onClick);
             }
 
 
@@ -89,3 +92,55 @@ function showCalendar(month, year) {
     }
 
 }
+
+
+function onClick(event){
+    const cells=document.querySelectorAll('td');
+    const eventsAdd=document.querySelector('.add');
+
+  //eventsAdd.classList.remove('hidden');
+    for(let i=0;i<cells.length;i++){
+        cells[i].classList.remove('bg-info');
+    }
+  
+    let id=event.target.id;
+    event.target.classList.add('bg-info');
+
+}
+
+
+function onSubmit(event){
+    event.preventDefault();
+    const activeCell=document.querySelector('.bg-info');
+    const time=document.querySelector('#time').value;
+    const info=document.querySelector('#info').value;
+    let id=activeCell.id;
+    console.log(id);
+    $.post('/calendar',{'date':id,'info':info,'time':time});
+    document.querySelector('#time').value="";
+    document.querySelector('#info').value="";
+}
+
+/*$(document).ready(function(){
+$("#daily_button").click(insertDaily);
+
+    function insertDaily(){
+        let daily = $('input[name="goal"]:checked');
+        $("#goal-id").append(`<p>${daily}</p>`);
+        $("#daily_button").hide();
+        $("#dgoal").hide();
+
+        }
+});*/
+function goalOnSubmit(event){
+    const goal=document.querySelector('#dgoal').value;
+    const p=document.querySelector('#goal-text');
+    p.textContent=goal;
+
+
+}
+const goalForm=document.querySelector('.goal-form');
+goalForm.addEventListener('submit',goalOnSubmit);
+
+const form=document.querySelector('.add form');
+form.addEventListener('submit',onSubmit);

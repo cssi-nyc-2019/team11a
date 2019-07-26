@@ -23,13 +23,14 @@
       <br>
 			<li><a href="/reminders">Reminders</a></li>
 
-			<li><a style="background-color: #292929; padding: 16px; margin: 8px; margin-top: 400px;" href="/">Log Out</a></li>
+			<li><a style="background-color: #292929; padding: 16px; margin: 8px; margin-top: 400px;" href="/logout">Log Out</a></li>
 		</ul>
   	</div>
 
   	<div class="dash-calendar">
   		<br>
   		<h1 style="text-align:center;font-size:45px;">{{date}}</h1>
+      <br>
       <hr>
   		<ul>
 
@@ -96,18 +97,21 @@
         <br>
         <input type="checkbox" name="reminder4">[Placeholder]</input>
     </div>
-
-    <div class="dash-goal">
+    <form class="goal-form">
+    <div id="goal-id" class="dash-goal">
       <h2>Daily Goal</h2>
       <hr>
-      <form method="" action="">
-
-      <label><br><textarea rows="5" cols="40" name="daily-goal"></textarea></label>
       <br>
-
-      <button id="submit-btn">+</button>
-    </form>
+      <label for="dgoal">Set a daily goal...</label>
+      <input type="text" name="goal" id="dgoal">
+      <p id="goal-text"> </p>
+      <br>
+      <br>
+      <button type ="submit" id="submit" name="daily_button" class="submit_btn">+</button>
     </div>
+</form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/script.js"></script>
 
 </body>
 </html>
