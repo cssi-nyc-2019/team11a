@@ -129,9 +129,6 @@ class Dashboard(BaseHandler):
 			self.redirect('/')
 
 
-		
-
-
 
 
 class Reminders(BaseHandler):
