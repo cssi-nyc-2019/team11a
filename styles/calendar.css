@@ -6,6 +6,7 @@
   
   --gradient:linear-gradient(to right, #fa709a 0%, #fee140 100%);
   --font: Fascinate;
+  --font-color:#969696;
 }
 
 body{
@@ -18,6 +19,11 @@ body{
   font-style: normal;
 
   margin: 0;
+}
+
+.grid{
+  display: grid       !important;
+  grid-template-columns: 1fr 1fr        !important;
 }
 
 .home {
@@ -59,27 +65,65 @@ body{
 }
 
 .sidenav li a:hover{
-  color: #969696;
+  color: var(--font-color);
 }
 
-/*
-.grid{
-  display: grid;
-  grid-template-columns:0% 110% 35%;
-
-}
-
-.events-list{
-  background-color: white;
-}
-.container{
-  align-self: start;
-  font-size: 1.5rem;
-}*/
 .container{
   position: absolute;
   top: 0;
   left:18rem;
   font-size: 1.2rem;
 }
+
+.events-section{
+  justify-self:center;
+  height:70%;
+  margin-top: 3rem;
+  background-color: white;
+  color:#6c757d;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 5px black;  
+}
+
+
+.events-section ul li{
+  list-style: square;
+  background-color: white;
+  border-radius: 2px;
+  color: black;
+  margin:5px;
+  padding: 3px;
+}
+
+.ongoing h1{
+  text-align: center;
+  font-weight: bold;
+}
+
+.add{
+  margin-top: 3rem;
+}
+
+.add button{
+  display: block;
+  background-color: var(--font-color);
+  color:black;
+  font-size: 1.5rem;
+  margin:10px auto;
+  border:none;
+  box-shadow: 0 3px 0 black;
+
+}
+
+.add button:hover{
+  box-shadow: 0 1px 0 black;
+}
+
+
+
+.hidden{
+  display: none;
+}
+
 
