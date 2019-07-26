@@ -9,6 +9,7 @@ class User(ndb.Model):
 class Events(ndb.Model):
 	date = ndb.StringProperty(required=True)
 
+
 	time = ndb.StringProperty(required=True)
 
 	info = ndb.StringProperty(required=True)
