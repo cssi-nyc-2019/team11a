@@ -104,6 +104,7 @@ function onClick(event){
     }
   
     let id=event.target.id;
+    console.log(id);
     event.target.classList.add('bg-info');
 
 }
