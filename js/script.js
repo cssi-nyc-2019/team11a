@@ -74,7 +74,7 @@ function showCalendar(month, year) {
                 cell.setAttribute('id',`${year} ${months[month]} ${date}`);
 
                 if (date === today.getDate() && year === today.getFullYear() && month === today.getMonth()) {
-                    cell.classList.add("bg-info");
+                   // cell.classList.add("bg-info");
                 } // color today's date
                 cell.appendChild(cellText);
                 
@@ -94,35 +94,49 @@ function showCalendar(month, year) {
 }
 
 
+function whenSubmit(event){
+    event.preventDefault();
+}
+
 function onClick(event){
     const cells=document.querySelectorAll('td');
     const eventsAdd=document.querySelector('.add');
-
-  //eventsAdd.classList.remove('hidden');
-    for(let i=0;i<cells.length;i++){
-        cells[i].classList.remove('bg-info');
-    }
+    const ongoing=document.querySelector('.ongoing ul');
+      //eventsAdd.classList.remove('hidden');
+    //for(let i=0;i<cells.length;i++){
+      //  cells[i].classList.remove('bg-info');
+    //}
   
     let id=event.target.id;
-    console.log(id);
+    
+    document.querySelector('#id').value=id
+    hidden_form=document.querySelector('#hidden-form');
+    hidden_form.addEventListener('submit',whenSubmit);
+    hidden_form.submit();
+
     event.target.classList.add('bg-info');
+   
+
 
 }
+const form=document.querySelector('.add form');
 
 
 function onSubmit(event){
     event.preventDefault();
     const activeCell=document.querySelector('.bg-info');
-    const time=document.querySelector('#time').value;
-    const info=document.querySelector('#info').value;
+    //const time=document.querySelector('#time').value;
+    //const info=document.querySelector('#info').value;
     let id=activeCell.id;
-    console.log(id);
-    $.post('/calendar',{'date':id,'info':info,'time':time});
+    document.querySelector('#date').value = id;
+    form.submit();
+    //$.post('/calendar',{'date':id,'info':info,'time':time});
     document.querySelector('#time').value="";
     document.querySelector('#info').value="";
+    
 }
 
 
 
-const form=document.querySelector('.add form');
+
 form.addEventListener('submit',onSubmit);

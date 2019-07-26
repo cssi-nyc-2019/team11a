@@ -164,18 +164,16 @@ class Calendar(BaseHandler):
 
 	def post(self):
 		date=self.request.get('date')
-		time=self.request.get('time')
-		info=self.request.get('info')
+		time=self.request.get('event-time')
+		info=self.request.get('event-info')
+	
 
 		newEvent=Events(date=date,time=time,info=info)
 		newEvent.put()
-		events_query=Events.query().filter(Events.date==date).fetch()
-		
-		
-		
 		
 		calendar_template=the_jinja_env.get_template('templates/calendar.html')
-		self.response.write(calendar_template.render({'events':events_query}))
+		#self.redirect('/dashboard')
+		self.response.write(calendar_template.render())
 
 
 
@@ -195,6 +193,19 @@ config['webapp2_extras.sessions'] = {
 }
 
 
+class Display(BaseHandler):
+	def post(self):
+		event_date=self.request.get("cellId")
+		query=Events.query().filter(Events.date==date).fetch()
+		event_info=None
+		event_time=None
+		for i in query:
+			event_info=i.info
+			event_time=i.time
+			
+		calendar_template=the_jinja_env.get_template('templates/calendar.html')
+		self.response.write(calendar_template.render({'date':event_date,'info':event_info, 'time':event_time}))
+
 
 
 
@@ -207,5 +218,6 @@ app = webapp2.WSGIApplication([
 		('/reminders',Reminders),
 		('/sign-up', Signup),
 		('/calendar',Calendar),
-		('/logout',Logout)
+		('/logout',Logout),
+		('/displayEvents',Display)
 		], debug=True, config=config)

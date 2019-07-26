@@ -122,23 +122,27 @@
 
 <div class="events-section">
 	<div class="ongoing">
-	<h1>Events</h1>
-	<hr>
-	<h3>Ongoing Events</h3>
-	<ul>
-		{%for event in events%}
-		<li>{{event.info}}</li>
-		{%endfor%}
-	</ul>
-</div>
+		<h1>Events</h1>
+		<hr>
+		<h3>Ongoing Events</h3>
+		<ul>
+		
+				<li>Date: {{date}} Time: {{time}} Info: {{info}}</li>
+		</ul>
+	</div>
 	<div class="add">
-	<h3>Add event</h3>
-	<form>
-		<label>Time: <input id="time" type="time" name="event-time"></label>
+		<h3>Add event</h3>
+		<form method="post" action="/calendar">
+			<label>Time: <input id="time" type="time" name="event-time"></label>
 		<label>Info: <input id="info" type="text" name="event-info"></label>
+		<input type="hidden" name="date" value="" id="date">
 		<button type="submit">+</button>
-	</form>
-</div>
+		</form>
+		<form method="post" action="/displayEvents" id="hidden-form">
+			<input type="hidden" name="cellId" id="id">
+			
+		</form>
+	</div>
 </div>
 
 </div>
