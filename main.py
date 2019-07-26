@@ -88,16 +88,6 @@ class Signup(BaseHandler):
 	def get(self):
 		signup_template = the_jinja_env.get_template('templates/signup.html')
 		self.response.write(signup_template.render())
-	def post(self):
-		email = self.request.get('email')
-		username = self.request.get('username')
-		password = self.request.get('password')
-
-		user = User(email=email, username=username, password=password)
-		user.put()
-		login(self, username)
-		log_template = the_jinja_env.get_template('templates/login.html')
-		self.response.write(log_template.render())
 
 
 class Dashboard(BaseHandler):
@@ -109,7 +99,7 @@ class Dashboard(BaseHandler):
 			self.response.write(dash_template.render(dash_dict))
 		else:
 			self.redirect('/')
-
+	
 	def post(self):
 		dash_template =  the_jinja_env.get_template('templates/dashboard.html')
 		login_template =  the_jinja_env.get_template('templates/login.html')
@@ -126,6 +116,7 @@ class Dashboard(BaseHandler):
 				break
 		if not(isLoggedIn(self)):
 			self.response.write(login_template.render())
+
 
 
 

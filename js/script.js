@@ -39,7 +39,7 @@ function showCalendar(month, year) {
     let tbl = document.getElementById("calendar-body"); // body of the calendar
 
     // clearing all previous cells
-    tbl.innerHTML = "";
+    //tbl.innerHTML = "";
 
     // filing data about month and in the page via DOM.
     monthAndYear.innerHTML = months[month] + " " + year;
@@ -122,7 +122,26 @@ function onSubmit(event){
     document.querySelector('#info').value="";
 }
 
+/*$(document).ready(function(){
+$("#daily_button").click(insertDaily);
 
+    function insertDaily(){
+        let daily = $('input[name="goal"]:checked');
+        $("#goal-id").append(`<p>${daily}</p>`);
+        $("#daily_button").hide();
+        $("#dgoal").hide();
+
+        }
+});*/
+function goalOnSubmit(event){
+    const goal=document.querySelector('#dgoal').value;
+    const p=document.querySelector('#goal-text');
+    p.textContent=goal;
+
+
+}
+const goalForm=document.querySelector('.goal-form');
+goalForm.addEventListener('submit',goalOnSubmit);
 
 const form=document.querySelector('.add form');
 form.addEventListener('submit',onSubmit);

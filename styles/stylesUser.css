@@ -65,9 +65,9 @@ body{
 
 .dash-calendar {
   width: 600px;
-  height: 100%;
+  height: 670px;
   padding: 10px;
-  margin-left: 16em;
+  margin-left: 17em;
   margin-top: 5em;
   margin-bottom: 5em;
   display: block;
@@ -76,6 +76,7 @@ body{
   border-radius: 8px;
   overflow: auto;
   float: left;
+  box-shadow: 0 0 5px #383838;  
 }
 
 .dash-calendar ul {
@@ -101,6 +102,7 @@ body{
   border-radius: 8px;
   overflow: auto;
   float: right;
+  box-shadow: 0 0 5px #383838;  
 }
 
 .dash-reminder input{
@@ -114,22 +116,27 @@ body{
   height: 100%;
   padding: 10px;
   margin-right: 5em;
-  margin-top: 40px;
+  margin-top: 33px;
   background-color: white;
   color: #6c757d;
   border-radius: 8px;
   overflow: auto;
   text-align: center;
   float: right;
+  box-shadow: 0 0 5px #383838;   
 }
 
-textarea{
-  font-size:1rem;
-  padding:3px;
-  color: #6c757d;
-}
-
-input {
+.dash-reminder input {
   width: 15px;
   height: 15px;
+}
+
+.dash-goal input {
+  width: 400px;
+  height: 25px;
+  font-family: proxima-nova, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 15px;
+  color: #6c757d;
 }
