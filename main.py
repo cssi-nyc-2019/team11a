@@ -82,24 +82,6 @@ class Login(BaseHandler):
 		login_template  = the_jinja_env.get_template('templates/login.html')
 		self.response.write(login_template.render())
 
-	def post(self):
-		dash_template =  the_jinja_env.get_template('templates/dashboard.html')
-		login_template =  the_jinja_env.get_template('templates/login.html')
-		username  = self.request.get('username')
-		password  = self.request.get('password')
-		query=User.query().fetch()
-		user = getCurrentUser(self)
-
-		for element  in  query:
-			if (element.username  ==  username) and  (element.password == password):
-				
-				login(self, username)
-				self.response.write(dash_template.render(dash_dict))
-				break
-		if not(isLoggedIn(self)):
-			self.response.write(login_template.render())
-
-
 		
 
 class Signup(BaseHandler):
@@ -127,6 +109,23 @@ class Dashboard(BaseHandler):
 			self.response.write(dash_template.render(dash_dict))
 		else:
 			self.redirect('/')
+
+	def post(self):
+		dash_template =  the_jinja_env.get_template('templates/dashboard.html')
+		login_template =  the_jinja_env.get_template('templates/login.html')
+		username  = self.request.get('username')
+		password  = self.request.get('password')
+		query=User.query().fetch()
+		user = getCurrentUser(self)
+
+		for element  in  query:
+			if (element.username  ==  username) and  (element.password == password):
+				
+				login(self, username)
+				self.response.write(dash_template.render(dash_dict))
+				break
+		if not(isLoggedIn(self)):
+			self.response.write(login_template.render())
 
 
 
@@ -169,9 +168,9 @@ class Calendar(BaseHandler):
 		info=self.request.get('info')
 
 		newEvent=Events(date=date,time=time,info=info)
-		events_query=Events.query().fetch()
-		events_query.insert(0,newhEvent)
 		newEvent.put()
+		events_query=Events.query().filter(Events.date==date).fetch()
+		
 		
 		
 		
